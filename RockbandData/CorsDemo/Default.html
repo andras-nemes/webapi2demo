@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    
+    <h1>CORS demo</h1>
+
+    <button id="getRockbands">Get rockbands</button>
+
+    <pre id="rockbands">
+
+    </pre>
+
+    <script src="Scripts/jquery-2.1.0.js"></script>
+    <script>
+        $(function ()
+        {
+            var rockbandSourceUrl = "http://localhost:50170/api/rockbands/";
+
+            var getRockbands = function ()
+            {
+                $.get(rockbandSourceUrl).always(showRockbands);
+                return false;
+            };
+
+            var showRockbands = function (obj)
+            {
+                $("#rockbands").text(JSON.stringify(obj, null, 3));
+            };
+
+            $("#getRockbands").click(getRockbands);
+        });
+    </script>
+</body>
+</html>
